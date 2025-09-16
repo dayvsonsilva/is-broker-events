@@ -9,7 +9,10 @@ RE_CAMERA_GATEWAY_CONSUMER = re.compile("CameraGateway\\.(\\d+)\\.GetConfig")
 
 
 def main() -> None:
-    broker_uri = json.load(open("../conf/options.json"))["broker_uri"]
+    # broker_uri = json.load(open("../conf/options.json"))["broker_uri"]
+    broker_uri = json.load(open("../is-broker-events/etc/conf/options.json"))["broker_uri"]
+
+    
     channel = Channel(broker_uri)
     subscription = Subscription(channel)
     subscription.subscribe("BrokerEvents.Consumers")
